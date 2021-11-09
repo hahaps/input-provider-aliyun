@@ -10,5 +10,3 @@ require (
 	github.com/alibabacloud-go/tea v1.1.17
 	github.com/hahaps/common-provider v0.0.0-20211107020258-6ab41f252751
 )
-
-replace github.com/hahaps/common-provider => /Users/lixipeng/Documents/tools/go_home/src/github.com/hahaps/common-provider
