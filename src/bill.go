@@ -83,7 +83,8 @@ func (InstanceBill)Call(params input.Params, replay *input.Replay) error {
 	next = params.Args["marker"].(string)
 	billingCycle := params.Args["billing_cycle"].(string)
 	if billingCycle == "current" {
-		billingCycle = time.Now().Format("2016-01")
+		now := time.Now()
+		billingCycle = now.Format("2006") + "-" + now.Format("01")
 	}
 	hideZeroCharge := params.Args["is_hide_zero_charge"].(bool)
 	subscription := params.Args["subscription_type"].(string)
