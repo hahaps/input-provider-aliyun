@@ -10,6 +10,7 @@ import (
 	"github.com/hahaps/common-provider/src/input"
 	"github.com/hahaps/common-provider/src/models"
 	"github.com/hahaps/input-provider-aliyun/src/common"
+	"time"
 )
 
 var InstanceBillSchemes = []utils.Scheme {
@@ -81,6 +82,9 @@ func (InstanceBill)Call(params input.Params, replay *input.Replay) error {
 	limit := int32(params.Args["limit"].(int))
 	next = params.Args["marker"].(string)
 	billingCycle := params.Args["billing_cycle"].(string)
+	if billingCycle == "current" {
+		billingCycle = time.Now().Format("2016-01")
+	}
 	hideZeroCharge := params.Args["is_hide_zero_charge"].(bool)
 	subscription := params.Args["subscription_type"].(string)
 	query := map[string]interface{} {
